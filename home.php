@@ -47,11 +47,11 @@ if (!$felh->get_session()) {
         </div>
 
         <?php
-        /*          if ($felh->isAdmin($felhAzon)) {
+            if ($felh->isAdmin($felhAzon)) {
             echo "<h2>Bejelentkezett felhasználók:</h2>";
             $matrix = $felh->aktivok();
             $felh->megjelenit_aktivok($matrix);
-        }  */
+        }  
         ?>
     </main>
 </body>

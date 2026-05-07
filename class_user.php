@@ -81,7 +81,7 @@ class User
 			$felhAzon = $user_data['felhAzon'];
 
 			$_SESSION['felhAzon'] = $felhAzon;
-			 $_SESSION['felhasznaloNev'] = $user_data['nev']; 
+			$_SESSION['felhasznaloNev'] = $user_data['nev'];
 
 			$sql = "UPDATE felhasznalo 
                 SET bejelentkezett = 1 
@@ -96,20 +96,27 @@ class User
 		}
 	}
 
-    	/*név lekérése*/
-     	public function get_nev($felhAzon){
-    		$sql="SELECT nev FROM felhasznalo WHERE felhAzon = $felhAzon";
-	        $result = $this->kapcsolat->query($sql);
-	        $user_data = $result->fetch_array(MYSQLI_ASSOC);
-	        return $user_data['nev'];
-    	} 
-		
-	/* 	public function isAdmin($felhAzon){
-    		$sql="SELECT ...";
-	        $result = ...;
-	        if ($result == 1){return true;}
-			return false;
-    	} */
+	/*név lekérése*/
+	public function get_nev($felhAzon)
+	{
+		$sql = "SELECT nev FROM felhasznalo WHERE felhAzon = $felhAzon";
+		$result = $this->kapcsolat->query($sql);
+		$user_data = $result->fetch_array(MYSQLI_ASSOC);
+		return $user_data['nev'];
+	}
+
+public function isAdmin($felhAzon)
+{
+    $sql = "SELECT j.nev FROM felhasznalo f 
+            INNER JOIN jogosultsag j ON f.jogAzon = j.jogAzon 
+            WHERE f.felhAzon = $felhAzon";
+    $result = $this->kapcsolat->query($sql);
+    $user_data = $result->fetch_array(MYSQLI_ASSOC);
+    if ($user_data['nev'] == 'admin') {
+        return true;
+    }
+    return false;
+}
 
 	/*** be van-e jelentkezve ***/
 	public function get_session()
@@ -121,17 +128,22 @@ class User
 	{
 		$felhAzon = $_SESSION['felhAzon'];
 		$sql = "UPDATE felhasznalo SET bejelentkezett = 0 WHERE felhAzon = $felhAzon";
-		$result = $this->kapcsolat->query($sql);
+		$this->kapcsolat->query($sql);
 		$_SESSION = [];
 		session_destroy();
 	}
+	public function aktivok()
+	{
+		$sql = "SELECT nev FROM felhasznalo WHERE bejelentkezett = 1";
+		return $this->kapcsolat->query($sql);
+	}
 
-	/* 		public function aktivok(){
-			$sql = "...";
-			return ...;
-		} */
-	/* 		
-		public function megjelenit_aktivok($matrix){
-			...;
-		} */
+	public function megjelenit_aktivok($matrix)
+	{
+		echo "<ul>";
+		while ($sor = $matrix->fetch_row()) {
+			echo "<li>$sor[0]</li>";
+		}
+		echo "</ul>";
+	}
 }
