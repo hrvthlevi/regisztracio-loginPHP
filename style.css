@@ -1,76 +1,125 @@
 * {
-        box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-main{
-        width:90%; 
-        margin: 0 auto;
-}
-#hiba{
-        padding: 20px;
-        width: 90%;
-        margin: 10px auto;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
 }
 
-form{
-        width: 40%;
-        margin: 10px auto;
-}
-form > label{
-        width: 20%;
-        margin: 15px;
-		padding: 5px 25px;
-        display: inline-block;
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
 }
 
-input, option, select{
-        width: 60%;
-        margin: 0px 20px;
-        padding: 5px;
+h1,
+h2,
+ul {
+    text-align: center;
+    margin: 10px 0;
 }
 
-input[type=submit], a {
-        text-align: center;
-        display: block;
-        background-color: #6ccca9;
-        border: none;
-        color: white;
-        padding: 10px 22px;
-        width: 85%;
-        margin: 2px auto;
+ul {
+    list-style-type: none;
 }
+
+#hiba {
+    width: 90%;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #ffdede;
+    border: 1px solid #ff9b9b;
+    border-radius: 8px;
+    text-align: center;
+}
+
 #hiba > img {
-        width: 80%;
+    width: 80%;
+    max-width: 300px;
 }
 
-h1, h2 , ul{
-        text-align: center;
-        margin: 2px 0px 5px;
+form {
+    width: 40%;
+    margin: 20px auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+form > label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+input,
+option,
+select {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #6ccca9;
+}
+
+button,
+input[type="submit"],
+a {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    background-color: #6ccca9;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #58b893;
 }
 
 a {
-        text-decoration: none;
-        background-color: #4f7668;
-}
-ul {
-        list-style-type: none;
+    background-color: #4f7668;
 }
 
-
-
-@media screen and (max-width: 600px) {
-  form {
-		width: 90%;
-  }
-  input, label, select{
-	  width: 65%;
-	  margin: 10px 20px;
-      padding: 5px;
-  }
+a:hover {
+    background-color: #3f5f54;
 }
 
 @media screen and (max-width: 1000px) {
-  form {
-		width: 70%;
-  }
+    form {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    form {
+        width: 90%;
+        padding: 20px;
+    }
+
+    input,
+    label,
+    select {
+        width: 100%;
+        margin: 10px 0;
+    }
 }

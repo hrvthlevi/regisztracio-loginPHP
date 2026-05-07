@@ -1,5 +1,5 @@
 <?php
-/* require_once 'class_user.php';
+require_once 'class_user.php';
 
 session_start();
 
@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
             exit;
         }
     }
-} */
+}
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +54,8 @@ if (isset($_POST['submit'])) {
                     id="n" 
                     name="nev" 
                     required 
-                    pattern="^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$"
+                    pattern=".{2,}"
+                    title="Legalább 2 karakter"
                 >
             </label>
 
@@ -79,7 +80,7 @@ if (isset($_POST['submit'])) {
                 >
             </label>
 
-            <button type="submit">Küldés</button>
+            <button type="submit" name="submit">Küldés</button>
 
         </form>
 
